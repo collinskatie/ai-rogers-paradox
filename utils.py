@@ -71,11 +71,12 @@ def plot_results(params_dict, social_learner_freqs, ai_bias_means, change_points
     plt.figure()
     plt.plot(range(params_dict['n_records']), learner_adaptation)
     plt.ylim((0,1))
-    plt.ylabel("Pop world understanding", fontfamily='serif', fontsize=axis_font_size)
+    plt.ylabel("Pop World Understanding", fontfamily='serif', fontsize=axis_font_size)
     plt.xlabel("Time", fontfamily='serif', fontsize=axis_font_size)
     plt.xticks(fontfamily='serif', fontsize=axis_tick_size, rotation=70)
     plt.yticks(fontfamily='serif', fontsize=axis_tick_size, rotation=70)
-    plt.savefig(dname+f"{params_dict['sim_name']}-population_adap.png")
+    plt.tight_layout()
+    plt.savefig(dname+f"{params_dict['sim_name']}-population_adap.pdf", dpi=300)
     #plt.close()
     
     window_size = 1

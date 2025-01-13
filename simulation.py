@@ -18,7 +18,8 @@ def create_population(N, phi):
 # Out: social_learner_freqs, ai_bias_means, change_points, ai_adaptation, learner_adaptation, social_learner_adaptation
 @jit(nopython=True)
 def run_simulation(N, n_generations, u, c_I, c_AI, z, s0, s1, phi, epsilon_I, mu, n_records, 
-                   social_learning_mode="ai", resignation=False, resignation_hint=1, critical=True, ind_penalty_mult=1., learn_twice=False):
+                   social_learning_mode="ai", resignation=False, resignation_hint=1, critical=True, ind_penalty_mult=1., learn_twice=False,
+                    ai_individ_learn=False, c_AI_i=0.2, z_AI_i=0.9):
     # Initialize population
     adapted, is_social_learner, ai_bias, age, individual_penalty = create_population(N, phi)
     old_ai_adapted = 0.0
@@ -123,12 +124,22 @@ def run_simulation(N, n_generations, u, c_I, c_AI, z, s0, s1, phi, epsilon_I, mu
             ai_bias = np.append(ai_bias, offspring_bias)
             age = np.append(age, np.ones(n_offspring, dtype=np.int64))
             individual_penalty = np.append(individual_penalty, np.ones(n_offspring, dtype=np.float64))
+        
+        
         # AI update
         old_ai_adapted = ai_adapted
-        if np.random.random() > c_AI:
-            ai_adapted=np.mean(adapted)
-            # ai_adapted = np.quantile(adapted.astype(np.float64),0.50)
-            
+        if not ai_individ_learn: 
+            # AI can only learn socially (default)
+            if np.random.random() > c_AI:
+                ai_adapted=np.mean(adapted)
+                # ai_adapted = np.quantile(adapted.astype(np.float64),0.50)
+        else: 
+            if np.random.random() > c_AI_i:
+                # Individual learning by AI
+                ai_adapted=np.random.random() < z_AI_i
+            else: 
+                # Social learning from humans
+                ai_adapted=np.mean(adapted)
         
         # Record statistics
         if gen >= n_generations - n_records:
