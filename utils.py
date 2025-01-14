@@ -92,7 +92,8 @@ def plot_results(params_dict, social_learner_freqs, ai_bias_means, change_points
     # plt.show()
     
     
-def get_heatmap(params_dict, all_scores, xvals, yvals, xlabel="", ylabel="", ax_font_size=18, plt_tag="heatmap"): 
+def get_heatmap(params_dict, all_scores, xvals, yvals, xlabel="", ylabel="", ax_font_size=18, plt_tag="heatmap",
+                vmin=0, vmax=1): 
     
     plt.rcParams['font.family'] = 'serif'
     
@@ -108,6 +109,8 @@ def get_heatmap(params_dict, all_scores, xvals, yvals, xlabel="", ylabel="", ax_
                 yticklabels=np.round(yvals, 2),
                 cmap='viridis',
                 annot=True,
+                vmin=vmin, 
+                vmax=vmax,
                 fmt='.2f',)
                 #cbar_kws={'label': 'Mean Learner Adaptation'})
 
