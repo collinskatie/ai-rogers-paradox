@@ -20,7 +20,7 @@ def plot_results(params_dict, social_learner_freqs, ai_bias_means, change_points
         plt.figure()
         plt.plot(range(params_dict['n_records']), social_learner_freqs)
         plt.ylim((0,1))
-        plt.scatter(inds, np.array(change_points)[inds]-1)
+        plt.scatter(inds, np.array(change_points)[inds]-1, color="grey")
         plt.ylabel("Social Learner Freq.", fontfamily='serif', fontsize=axis_font_size)
         plt.xlabel("Time", fontfamily='serif', fontsize=axis_font_size)
         plt.xticks(fontfamily='serif', fontsize=axis_tick_size)
@@ -29,7 +29,7 @@ def plot_results(params_dict, social_learner_freqs, ai_bias_means, change_points
         #plt.close()
 
         plt.figure()
-        plt.plot(range(params_dict['n_records']), social_learner_adaptation)
+        plt.plot(range(params_dict['n_records']), social_learner_adaptation, color="grey")
         plt.ylim((0,1))
         plt.ylabel("Social learner adaptation", fontfamily='serif', fontsize=axis_font_size)
         plt.xlabel("Time", fontfamily='serif', fontsize=axis_font_size)
@@ -40,7 +40,7 @@ def plot_results(params_dict, social_learner_freqs, ai_bias_means, change_points
 
     if params_dict["social_learning_mode"] in ["both"]:
         plt.figure()
-        plt.plot(range(params_dict['n_records']), ai_bias_means)
+        plt.plot(range(params_dict['n_records']), ai_bias_means, color="grey")
         plt.plot([0,params_dict['n_records']],[1,1],linestyle='--')
         plt.ylabel("AI bias", fontfamily='serif', fontsize=axis_font_size)
         plt.xlabel("Time", fontfamily='serif', fontsize=axis_font_size)
@@ -50,7 +50,7 @@ def plot_results(params_dict, social_learner_freqs, ai_bias_means, change_points
         #plt.close()
 
         plt.figure()
-        plt.plot(range(params_dict['n_records']), ai_bias_means/(ai_bias_means+1))
+        plt.plot(range(params_dict['n_records']), ai_bias_means/(ai_bias_means+1), color="grey")
         plt.plot([0,params_dict['n_records']],[1,1],linestyle='--')
         plt.ylabel("AI probability", fontfamily='serif', fontsize=axis_font_size)
         plt.xlabel("Time", fontfamily='serif', fontsize=axis_font_size)
@@ -62,7 +62,7 @@ def plot_results(params_dict, social_learner_freqs, ai_bias_means, change_points
     if params_dict["social_learning_mode"] in ["ai", "both"]:
         
         plt.figure()
-        plt.plot(range(params_dict['n_records']), ai_adaptation)
+        plt.plot(range(params_dict['n_records']), ai_adaptation, color="grey")
         plt.ylim((0,1))
         plt.ylabel("AI adaptation", fontfamily='serif', fontsize=axis_font_size)
         plt.xlabel("Time", fontfamily='serif', fontsize=axis_font_size)
@@ -73,7 +73,7 @@ def plot_results(params_dict, social_learner_freqs, ai_bias_means, change_points
     
     print('collective model understanding')
     plt.figure()
-    plt.plot(range(params_dict['n_records']), learner_adaptation)
+    plt.plot(range(params_dict['n_records']), learner_adaptation, color="grey")
     plt.ylim((0,1))
     plt.ylabel("Pop World Understanding", fontfamily='serif', fontsize=axis_font_size)
     plt.xlabel("Time", fontfamily='serif', fontsize=axis_font_size)
