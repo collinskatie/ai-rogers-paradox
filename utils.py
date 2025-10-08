@@ -92,6 +92,17 @@ def plot_results(params_dict, social_learner_freqs, ai_bias_means, change_points
     # plt.ylabel("Social learner adaptation")
     # plt.show()
     
+
+def bootstrap_ci(data, n_bootstrap=1000):
+    bootstrap_means = []
+    n = len(data)
+    for _ in range(n_bootstrap):
+        sample = np.random.choice(data, size=n, replace=True)
+        bootstrap_means.append(np.mean(sample))
+    
+    lower = np.percentile(bootstrap_means, 2.5)
+    upper = np.percentile(bootstrap_means,97.5)
+    return lower, upper
     
 def get_heatmap(params_dict, all_scores, xvals, yvals, xlabel="", ylabel="", ax_font_size=18, plt_tag="heatmap",
                 vmin=0, vmax=1): 

@@ -102,7 +102,7 @@ def run_simulation(N, n_generations, u, c_I, c_AI, z, s0, s1, phi, epsilon_I, mu
             parent_indices = np.random.randint(0, current_size, n_offspring)
             
             # Offspring traits with mutation
-            offspring_social = np.zeros(n_offspring, dtype=np.bool)
+            offspring_social = np.zeros(n_offspring, dtype=np.bool_)
             offspring_bias = np.zeros(n_offspring)
             
             for j in range(n_offspring):
@@ -276,7 +276,7 @@ def run_simulation_feedback(N, n_generations, u, c_I, c_AI, z, s0, s1, phi, epsi
             parent_indices = np.random.randint(0, current_size, n_offspring)
             
             # Offspring traits with mutation
-            offspring_social = np.zeros(n_offspring, dtype=np.bool)
+            offspring_social = np.zeros(n_offspring, dtype=np.bool_)
             offspring_bias = np.zeros(n_offspring)
             
             for j in range(n_offspring):
