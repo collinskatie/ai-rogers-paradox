@@ -82,7 +82,7 @@ def plot_results(params_dict, social_learner_freqs, ai_bias_means, change_points
     plt.xticks(fontfamily='serif', fontsize=axis_tick_size, rotation=70)
     plt.yticks(fontfamily='serif', fontsize=axis_tick_size, rotation=70)
     plt.tight_layout()
-    plt.savefig(dname+f"{params_dict['sim_name']}-population_adap.pdf", dpi=300)
+    plt.savefig(dname+f"{params_dict['sim_name']}-population_adap.png", dpi=300)
     #plt.close()
     
     
@@ -128,4 +128,4 @@ def get_heatmap(params_dict, all_scores, xvals, yvals, xlabel="", ylabel="", ax_
 
     plt.tight_layout()
 
-    plt.savefig(dname+f"{params_dict['sim_name']}-{plt_tag}.pdf", dpi=300)
+    plt.savefig(dname+f"{params_dict['sim_name']}-{plt_tag}.png", dpi=300)
